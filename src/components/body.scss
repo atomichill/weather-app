@@ -1,0 +1,22 @@
+body {
+    background-color: #0b0b14;
+    
+    .body_wrap {
+        display: flex;
+        justify-content: center;
+        
+        .background_img {
+            margin-top: 70px;
+            width: 1400px;
+            height: 800px;
+            background: url(./cloudy.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 20px;
+            
+
+
+            display: flex;
+        }
+    }
+}

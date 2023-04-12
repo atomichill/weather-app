@@ -1,0 +1,47 @@
+
+    
+    .info_wrap {
+        margin-left: 50px;
+        padding: 50px;
+        height: 700px;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .title {
+            font-size: 25px;
+        }
+        .background_info {
+            img {
+                height: 150px;
+                margin-left: 10px;
+            }
+            display: flex;
+            align-items: center;
+            .temp {
+                font-size: 150px;
+            }
+            .info_city {
+                margin-left: 20px;
+                p {
+                    font-size: 60px;
+                }
+                .date_time_info {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+    
+
+    h1 {
+        color: white;
+        font-family: 'Hind Siliguri';
+    }
+    p {
+        color: white;
+        font-family: 'Hind Siliguri';
+    }
+    
+
