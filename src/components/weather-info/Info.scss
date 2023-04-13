@@ -1,0 +1,24 @@
+
+
+.weather_i_container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    p {
+        font-size: 20px;
+        margin-top: 30px;
+        font-family: 'Hind Siliguri';
+    }
+    .img_wrap {
+        margin-right: 150px;
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        .wind_img {
+            width: 50px;
+            
+        }
+    }
+    
+}

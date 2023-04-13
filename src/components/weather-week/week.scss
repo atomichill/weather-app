@@ -1,0 +1,22 @@
+
+.week_el {
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    
+    .week_day {
+        font-size: 12px;
+    }
+
+    .elem_numb {
+        font-size: 15px;
+    }
+    .alt_number {
+        font-size: 10px;
+    }
+    .wind_img {
+        width: 40px;
+    }
+}
