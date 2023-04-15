@@ -1,5 +1,5 @@
 function getWeather () {
-    let _apiKey = '4cd6a117b236aef8887a8b8b5122873d'
+    
   
     function getCurrentLocation() {
       return new Promise((resolve, reject) => {
@@ -27,7 +27,7 @@ function getWeather () {
     }
   
     return getCurrentLocation().then(({latitude, longitude}) => {
-      let _url = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=current&appid=${_apiKey}`;
+      let _url = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=current&appid=${process.env.API_KEY}`;
       return getResource(_url);
     });
 }
