@@ -1,4 +1,5 @@
 import './body.scss'
+import '../fonts/fonts-scss/fonts.scss'
 
 import BodyInfo from './main-info/BodyInfo';
 import WeatherMain from './weather-main/WeatherMain';

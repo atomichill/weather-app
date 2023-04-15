@@ -1,5 +1,5 @@
 import './weather.scss'
-import '../../fonts.scss'
+import '../../fonts/fonts-scss/fonts.scss'
 
 
 import WeatherInfo from '../weather-info/Info'

@@ -1,0 +1,41 @@
+.weather_i_wrap .weather_i_bg {
+  margin-left: 150px;
+  height: 800px;
+  width: 550px;
+  backdrop-filter: blur(19.5px);
+  -webkit-backdrop-filter: blur(19.5px);
+  border-radius: 10px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.weather_i_wrap .weather_i_bg .content_wrap {
+  padding: 30px;
+}
+.weather_i_wrap .weather_i_bg .content_wrap .hourly {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.weather_i_wrap .weather_i_bg .content_wrap .week_weather {
+  margin-top: 30px;
+  display: flex;
+}
+.weather_i_wrap .weather_i_bg .content_wrap .line {
+  margin-top: 20px;
+  width: 500px;
+  height: 2px;
+  background-color: white;
+  opacity: 0.5;
+}
+.weather_i_wrap .weather_i_bg .content_wrap .weather_info {
+  display: flex;
+  flex-direction: column;
+}
+.weather_i_wrap .weather_i_bg .content_wrap .weather_info h1 {
+  font-size: 25px;
+  margin-top: 30px;
+  font-family: "Hind Siliguri";
+  text-align: center;
+}/*# sourceMappingURL=weather.css.map */

@@ -1,4 +1,5 @@
 import './info.scss'
+import '../../fonts/fonts-scss/fonts.scss'
 
 import wind from './wind.svg'
 import cloudy from './cloudy.svg'

@@ -1,13 +1,13 @@
-
+$var30: 30px;
 
 .weather_i_container {
-    margin-top: 30px;
+    margin-top: $var30;
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     p {
         font-size: 20px;
-        margin-top: 30px;
+        margin-top: $var30;
         font-family: 'Hind Siliguri';
     }
     .img_wrap {

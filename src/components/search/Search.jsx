@@ -1,5 +1,6 @@
 import './search.scss'
 
+import '../../fonts/fonts-scss/fonts.scss'
 
 function Search () {
     return (

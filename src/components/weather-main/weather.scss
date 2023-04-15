@@ -1,5 +1,5 @@
-
-
+$var20: 20px;
+$var30: 30px;
 
 .weather_i_wrap {
     .weather_i_bg {
@@ -13,24 +13,24 @@
         -webkit-backdrop-filter: blur( 19.5px );
         border-radius: 10px;
         
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
+        border-top-right-radius: $var20;
+        border-bottom-right-radius: $var20;
 
         .content_wrap {
-            padding: 30px;
+            padding: $var30;
             .hourly {
-                margin-top: 30px;
+                margin-top: $var30;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items:center;
             }
             .week_weather {
-                margin-top: 30px;
+                margin-top: $var30;
                 display: flex;
             }
             .line {
-                margin-top: 20px;
+                margin-top: $var20;
                 width: 500px;
                 height: 2px;
                 background-color: white;
@@ -41,7 +41,7 @@
                 flex-direction: column;
                 h1 {
                     font-size: 25px;
-                    margin-top: 30px;
+                    margin-top: $var30;
                     font-family: 'Hind Siliguri';
                     text-align: center;
                 }

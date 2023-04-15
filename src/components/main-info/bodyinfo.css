@@ -1,0 +1,42 @@
+.info_wrap {
+  margin-left: 50px;
+  padding: 50px;
+  height: 700px;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.info_wrap .title {
+  font-size: 25px;
+}
+.info_wrap .background_info {
+  display: flex;
+  align-items: center;
+}
+.info_wrap .background_info img {
+  height: 150px;
+  margin-left: 10px;
+}
+.info_wrap .background_info .temp {
+  font-size: 150px;
+}
+.info_wrap .background_info .info_city {
+  margin-left: 20px;
+}
+.info_wrap .background_info .info_city p {
+  font-size: 60px;
+}
+.info_wrap .background_info .info_city .date_time_info {
+  font-size: 20px;
+}
+
+h1 {
+  color: white;
+  font-family: "Hind Siliguri";
+}
+
+p {
+  color: white;
+  font-family: "Hind Siliguri";
+}/*# sourceMappingURL=bodyinfo.css.map */

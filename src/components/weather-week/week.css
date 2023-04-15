@@ -1,0 +1,19 @@
+.week_el {
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.week_el .week_day {
+  font-size: 12px;
+}
+.week_el .elem_numb {
+  font-size: 15px;
+}
+.week_el .alt_number {
+  font-size: 10px;
+}
+.week_el .wind_img {
+  width: 40px;
+}/*# sourceMappingURL=week.css.map */
