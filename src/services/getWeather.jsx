@@ -1,6 +1,6 @@
 
 
-function getWeather () {
+async function getWeather () {
     
   
   
@@ -30,9 +30,11 @@ function getWeather () {
     return await res.json()
   }
 
-  return getCurrentLocation().then(({latitude, longitude, timestamp}) => {
+  return getCurrentLocation().then(({latitude, longitude}) => {
+    
     let _url = `http://api.weatherapi.com/v1/current.json?key=${_apiKey}&q=${latitude},${longitude}&aqi=no`;
-    return getResource(_url);
+    
+    return  getResource(_url);
   });
     
 }

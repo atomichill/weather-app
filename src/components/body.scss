@@ -5,7 +5,7 @@ body {
         display: flex;
         justify-content: center;
         
-        .background_img {
+        .background_img_night {
             margin-top: 70px;
             width: 1400px;
             height: 800px;
@@ -18,5 +18,19 @@ body {
 
             display: flex;
         }
+        .background_img_day {
+            margin-top: 70px;
+            width: 1400px;
+            height: 800px;
+            background: url(./cloudy.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 20px;
+            
+
+
+            display: flex;
+        }
+
     }
 }

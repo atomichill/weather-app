@@ -7,7 +7,7 @@ import WeatherMain from './weather-main/WeatherMain';
 function Body () {
     return (
         <div className="body_wrap">
-            <div className="background_img">
+            <div className="background_img_night">
                 <BodyInfo/>
                 <WeatherMain/>
             </div>
