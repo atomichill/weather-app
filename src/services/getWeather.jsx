@@ -33,8 +33,11 @@ async function getWeather () {
   return getCurrentLocation().then(({latitude, longitude}) => {
     
     let _url = `http://api.weatherapi.com/v1/current.json?key=${_apiKey}&q=${latitude},${longitude}&aqi=no`;
+    let _forcast = `http://api.weatherapi.com/v1/forecast.json?key=${_apiKey}&q=${latitude},${longitude}&aqi=no&days=7`;
     
-    return  getResource(_url);
+    const dayWeather = getResource(_url);
+    const forecast = getResource(_forcast);
+    return  {dayWeather , forecast};
   });
     
 }

@@ -7,18 +7,29 @@ import React, { useState, useEffect } from "react";
 
 function BodyInfo () {
     
-    const [weatherData, setWeatherData] = useState({});
-  
-    useEffect(() => {
-      getWeather().then((data) => {
+  const [dayWeather, setDayWeather] = useState(null);
+  const [weatherData, setWeatherData] = useState({});
+
+  useEffect(() => {
+    getWeather().then(({ dayWeather }) => {
+      setDayWeather(dayWeather);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (dayWeather) {
+      dayWeather.then((data) => {
         setWeatherData(data);
       });
-    }, []);
-  
-    if (!weatherData.location) {
-      return <div>Loading...</div>;
     }
+  }, [dayWeather]);
+
+  if (!weatherData.current) {
+    return <div>Loading...</div>;
+  }
+
   
+
     const { location, current } = weatherData;
 
     

@@ -13,10 +13,12 @@ body {
             background-repeat: no-repeat;
             background-size: cover;
             border-radius: 20px;
-            
-
-
+            position: relative;
             display: flex;
+            .info_container {
+                position: absolute;
+                right: 0px;
+            }
         }
         .background_img_day {
             margin-top: 70px;
@@ -26,10 +28,12 @@ body {
             background-repeat: no-repeat;
             background-size: cover;
             border-radius: 20px;
-            
-
-
+            position: relative;
             display: flex;
+            .info_container {
+                position: absolute;
+                right: 0px;
+            }
         }
 
     }
