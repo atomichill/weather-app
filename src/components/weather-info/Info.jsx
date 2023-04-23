@@ -9,12 +9,12 @@ import { getWeather } from '../../services/getWeather'
 
 
 function WeatherInfo () {
-    
+    console.log(getWeather());
     const [dayWeather, setDayWeather] = useState(null);
     const [weatherData, setWeatherData] = useState({});
   
     useEffect(() => {
-      getWeather().then(({ dayWeather }) => {
+      getWeather().then(({dayWeather}) => {
         setDayWeather(dayWeather);
       });
     }, []);
@@ -26,13 +26,13 @@ function WeatherInfo () {
         });
       }
     }, [dayWeather]);
-  
+    
     if (!weatherData.current) {
       return <div>Loading...</div>;
     }
-  
+    
     const { current } = weatherData;
-
+    
 
     return (
         <div>
