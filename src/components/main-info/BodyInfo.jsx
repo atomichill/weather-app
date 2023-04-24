@@ -6,44 +6,34 @@ import { getWeather } from '../../services/getWeather'
 import React, { useState, useEffect } from "react";
 
 function BodyInfo () {
-    
-  const [dayWeather, setDayWeather] = useState(null);
-  const [weatherData, setWeatherData] = useState({});
+  const [weatherData, setWeatherData] = useState(null);
+  const [locationData, setLocationData] = useState(null);
 
   useEffect(() => {
-    getWeather().then(({ dayWeather }) => {
-      setDayWeather(dayWeather);
+    getWeather().then(({ current }) => {
+      setWeatherData(current);
     });
   }, []);
 
   useEffect(() => {
-    if (dayWeather) {
-      dayWeather.then((data) => {
-        setWeatherData(data);
-      });
-    }
-  }, [dayWeather]);
+    getWeather().then(({ location }) => {
+      setLocationData(location);
+    });
+  }, []);
 
-  if (!weatherData.current) {
+  if (!weatherData && !locationData) {
     return <div>Loading...</div>;
   }
-
-  
-
-    const { location, current } = weatherData;
-
-    
-
     return (
         <div className='info_wrap'>
             <h1 className='title'>The.Weather</h1>
             <div className='background_info'>
-                <h1 className='temp'>{current.temp_c}°</h1>
+                <h1 className='temp'>{weatherData.temp_c}°</h1>
                 <div className='info_city'>
-                    <p>{location.name}</p>
-                    <p className='date_time_info'>{current.last_updated}</p>
+                    <p>{locationData.name}</p>
+                    <p className='date_time_info'>{weatherData.last_updated}</p>
                 </div>
-                <img src={current.condition.icon} alt={current.condition.text} />
+                <img src={weatherData.condition.icon} alt={weatherData.condition.text} />
             </div>
         </div>   
     )

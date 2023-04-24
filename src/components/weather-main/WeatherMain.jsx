@@ -1,13 +1,15 @@
 import './weather.scss'
 import '../../fonts/fonts-scss/fonts.scss'
 import '../weather-week/week.scss'
-import rain from '../weather-week/rain.svg'
+
 import WeatherInfo from '../weather-info/Info';
 import Search from '../search/Search';
+import Hourly from '../hourly-info/Hourly'
 import { getWeather } from '../../services/getWeather'
 import { useState, useEffect } from 'react'
 
 function WeatherMain() {
+  console.log(getWeather());
   const [forecastData, setForecastData] = useState([]);
 
   useEffect(() => {
@@ -35,13 +37,25 @@ function WeatherMain() {
           <div className='week_weather'>
             {forecastData.map((day) => (
               <div className='week_el' key={day.date_epoch}>
-                <p>{day.date}</p>
-                <img src={rain} alt="rain" className='wind_img'/>
+                <p className='elem_date'>{day.date}</p>
+                <img src={day.day.condition.icon} alt="rain" className='wind_img'/>
                 <p className='elem_numb'>{day.day.maxtemp_c}°/<span className='alt_number'>{day.day.mintemp_c}°</span></p>
               </div>
             ))}
           </div>
           <div className='line' />
+          <div className='hourly_wrap'>
+            {
+              forecastData.map((day) => (
+                <div className='hourly_el'>
+                  <p>{day.hour.time}</p>
+                  
+                  <p>Windy</p>
+                  <p>48°</p>
+                </div>
+              ))
+            }
+          </div>
         </div>
       </div>
     </div>

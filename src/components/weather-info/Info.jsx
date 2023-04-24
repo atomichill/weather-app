@@ -8,53 +8,40 @@ import React, { useState, useEffect } from "react";
 import { getWeather } from '../../services/getWeather'
 
 
-function WeatherInfo () {
-    console.log(getWeather());
-    const [dayWeather, setDayWeather] = useState(null);
-    const [weatherData, setWeatherData] = useState({});
-  
-    useEffect(() => {
-      getWeather().then(({dayWeather}) => {
-        setDayWeather(dayWeather);
-      });
-    }, []);
-  
-    useEffect(() => {
-      if (dayWeather) {
-        dayWeather.then((data) => {
-          setWeatherData(data);
-        });
-      }
-    }, [dayWeather]);
-    
-    if (!weatherData.current) {
-      return <div>Loading...</div>;
-    }
-    
-    const { current } = weatherData;
-    
+function WeatherInfo() {
+  const [weatherData, setWeatherData] = useState(null);
 
-    return (
+  useEffect(() => {
+    getWeather().then(({ current }) => {
+      setWeatherData(current);
+    });
+  }, []);
+
+  if (!weatherData) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div>
+      <div className='weather_i_container'>
         <div>
-            <div className='weather_i_container'>
-                <div>
-                    <p>Clody</p>
-                    <p>Humidity</p>
-                    <p>Wind</p>
-                </div>
-                <div className='img_wrap'>
-                    <img src={cloudy} alt="cloudy" className='wind_img'/>
-                    <img src={humidity} alt="humidity" className='wind_img'/>
-                    <img src={wind} alt="windicon" className='wind_img'/>
-                </div>
-                <div>
-                    <p>{current.cloud}%</p>
-                    <p>{current.humidity}%</p>
-                    <p>{current.wind_kph}km/h</p>
-                </div>
-            </div>
+          <p>Clody</p>
+          <p>Humidity</p>
+          <p>Wind</p>
         </div>
-    )
+        <div className='img_wrap'>
+          <img src={cloudy} alt='cloudy' className='wind_img' />
+          <img src={humidity} alt='humidity' className='wind_img' />
+          <img src={wind} alt='windicon' className='wind_img' />
+        </div>
+        <div>
+          <p>{weatherData.cloud}%</p>
+          <p>{weatherData.humidity}%</p>
+          <p>{weatherData.wind_kph}km/h</p>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default WeatherInfo;

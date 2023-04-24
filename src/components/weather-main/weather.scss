@@ -36,6 +36,12 @@ $var30: 30px;
                 background-color: white;
                 opacity: 0.5;
             }
+            .hourly_wrap {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 10px;
+            }
             .weather_info {
                 display: flex;
                 flex-direction: column;
