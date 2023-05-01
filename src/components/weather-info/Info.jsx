@@ -10,7 +10,7 @@ import { getWeather } from '../../services/getWeather'
 
 function WeatherInfo() {
   const [weatherData, setWeatherData] = useState(null);
-
+  
   useEffect(() => {
     getWeather().then(({ current }) => {
       setWeatherData(current);

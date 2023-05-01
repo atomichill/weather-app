@@ -19,6 +19,15 @@ body {
                 position: absolute;
                 right: 0px;
             }
+            .btn_clck {
+                width: 40px;
+                height: 40px;
+                border-radius: 100%;
+                border: solid white 4px;
+                cursor: pointer;
+                margin-top: 20px;
+                
+            }
         }
         .background_img_day {
             margin-top: 70px;
@@ -30,10 +39,20 @@ body {
             border-radius: 20px;
             position: relative;
             display: flex;
+            .btn_clck {
+                width: 40px;
+                height: 40px;
+                border-radius: 100%;
+                border: solid white 4px;
+                cursor: pointer;
+                margin-top: 20px;
+            }
             .info_container {
                 position: absolute;
                 right: 0px;
+                
             }
+            
         }
 
     }

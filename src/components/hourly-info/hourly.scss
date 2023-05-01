@@ -1,9 +1,11 @@
 .hourly_el {
-    width: 200px;
+    width: 400px;
     display:flex;
     align-items: center;
     justify-content: space-between;
-    .hourly_img {
-        width: 30px;
+    margin-top: 5px;
+    .time{
+        margin-right: 10px;
     }
+    
 }

@@ -33,7 +33,7 @@ function BodyInfo () {
                     <p>{locationData.name}</p>
                     <p className='date_time_info'>{weatherData.last_updated}</p>
                 </div>
-                <img src={weatherData.condition.icon} alt={weatherData.condition.text} />
+                 
             </div>
         </div>   
     )
