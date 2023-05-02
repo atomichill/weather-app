@@ -10,6 +10,12 @@ $var30: 30px;
         margin-top: $var30;
         font-family: 'Hind Siliguri';
     }
-    
+    .img_wrap {
+        display: flex;
+        flex-direction: column;
+        .wind_img {
+            width: 10px;
+        }
+    }
     
 }

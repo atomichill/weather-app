@@ -66,12 +66,13 @@ function WeatherMain() {
                 }
                 const time = selectedHourData.time.split(' ')[1].slice(0, -3);
                 const condition = selectedHourData.condition.text;
+                const temp = selectedHourData.temp_c
 
                 return (
                   <div className='hourly_el' key={index}>
                     <p className='time'>{time}:00 {CheckTime(time)}</p>
                     <p className='condition'>{condition}</p>
-                    <p className='temp'>{temperature}°</p>
+                    <p className='temp'>{temp}°</p>
                   </div>
                 );
               })}
