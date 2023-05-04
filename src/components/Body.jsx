@@ -1,16 +1,19 @@
 import './body.scss'
 import '../fonts/fonts-scss/fonts.scss'
 
+import Modal from './modal/Modal';
 import BodyInfo from './main-info/BodyInfo';
 import WeatherMain from './weather-main/WeatherMain';
 import { getWeather } from '../services/getWeather';
 import { useEffect, useState , useMemo} from 'react';
+import {useSelector} from 'react-redux'
 
 function Body () {
     console.log(getWeather())
     const [weatherData, setWeatherData] = useState(null);
     const [render,setRender] = useState();
-
+    const [show,setShow] = useState(false);
+    const modalStatus = useSelector(state => state.modal);
     useEffect(() => {
         getWeather().then(({ current }) => {
         setWeatherData(current);
@@ -49,13 +52,24 @@ function Body () {
             )
         }
     }
+
+    const chekModalStatus = () => {
+        if(modalStatus === true) {
+            return (
+                <Modal onClose={() => setShow(false)}/>
+            )
+        }
+    }
     return (
         <div className="body_wrap">
             <div className={chekDay()}>
+                {
+                    chekModalStatus
+                }
                 <BodyInfo/>
                 <div className='btn_clck' onClick={chekRender}/>
                 {
-                    clicked()
+                    clicked
                 };
             </div>
         </div>
