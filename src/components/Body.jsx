@@ -5,15 +5,18 @@ import Modal from './modal/Modal';
 import BodyInfo from './main-info/BodyInfo';
 import WeatherMain from './weather-main/WeatherMain';
 import { getWeather } from '../services/getWeather';
-import { useEffect, useState , useMemo} from 'react';
-import {useSelector} from 'react-redux'
+import { useEffect, useState} from 'react';
+
+import { useSelector } from 'react-redux';
 
 function Body () {
+    
     console.log(getWeather())
     const [weatherData, setWeatherData] = useState(null);
     const [render,setRender] = useState();
-    const [show,setShow] = useState(false);
-    const modalStatus = useSelector(state => state.modal);
+    const modal = useSelector((state) => state.counter.modal);
+    
+
     useEffect(() => {
         getWeather().then(({ current }) => {
         setWeatherData(current);
@@ -54,9 +57,9 @@ function Body () {
     }
 
     const chekModalStatus = () => {
-        if(modalStatus === true) {
+        if(modal === true) {
             return (
-                <Modal onClose={() => setShow(false)}/>
+                <Modal/>
             )
         }
     }
@@ -64,12 +67,12 @@ function Body () {
         <div className="body_wrap">
             <div className={chekDay()}>
                 {
-                    chekModalStatus
+                    chekModalStatus()
                 }
                 <BodyInfo/>
                 <div className='btn_clck' onClick={chekRender}/>
                 {
-                    clicked
+                    clicked()
                 };
             </div>
         </div>
