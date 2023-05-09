@@ -1,22 +1,23 @@
 import './bodyinfo.scss'
 import '../../fonts/fonts-scss/fonts.scss'
-import cloudy from './partly-cloudy-day.svg'
 
+import { useSelector } from 'react-redux';
 import { getWeather } from '../../services/getWeather'
 import React, { useState, useEffect } from "react";
 
 function BodyInfo () {
+  const city = useSelector((state) => state.input.inputSlice)
   const [weatherData, setWeatherData] = useState(null);
   const [locationData, setLocationData] = useState(null);
 
   useEffect(() => {
-    getWeather().then(({ current }) => {
+    getWeather(city).then(({ current }) => {
       setWeatherData(current);
     });
   }, []);
 
   useEffect(() => {
-    getWeather().then(({ location }) => {
+    getWeather(city).then(({ location }) => {
       setLocationData(location);
     });
   }, []);
@@ -33,7 +34,6 @@ function BodyInfo () {
                     <p>{locationData.name}</p>
                     <p className='date_time_info'>{weatherData.last_updated}</p>
                 </div>
-                 
             </div>
         </div>   
     )

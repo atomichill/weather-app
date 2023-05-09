@@ -1,9 +1,4 @@
-
-
-
 import './reset.scss'
-
-
 import Body from './components/Body'
 
 

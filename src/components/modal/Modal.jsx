@@ -1,6 +1,6 @@
 import './modal.scss'
 import {useDispatch} from 'react-redux'
-import { closeModal } from '../../slice/slice';
+import { closeModal } from '../../slice/slice'
 
 function Modal () {
     const dispatch = useDispatch();
@@ -16,7 +16,7 @@ function Modal () {
                     This is beta version of the app. coding is in progress
                 </div>
                 <div className="modal_footer">
-                    <button className="button" onClose={() => dispatch(closeModal())}> close</button>
+                    <button className="button" onClick={() => dispatch(closeModal())}> cancel </button>
                 </div>
             </div>
         </div>

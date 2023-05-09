@@ -1,6 +1,7 @@
 
 
-async function getWeather() {
+async function getWeather(city) {
+
   function getCurrentLocation() {
     return new Promise((resolve, reject) => {
       if (navigator.geolocation) {
@@ -21,6 +22,8 @@ async function getWeather() {
     });
   }
 
+
+
   let getResource = async (url) => {
     let res = await fetch(url);
 
@@ -30,12 +33,23 @@ async function getWeather() {
 
     return await res.json();
   };
+  
+
 
   try {
+    
     const { latitude, longitude } = await getCurrentLocation();
-    const _apiKey = '76c8ab647eb546bfb7e130818231604'
-    let _url = `http://api.weatherapi.com/v1/current.json?key=${_apiKey}&q=${latitude},${longitude}&aqi=no`;
-    let _forcast = `http://api.weatherapi.com/v1/forecast.json?key=${_apiKey}&q=${latitude},${longitude}&aqi=no&days=7`;
+    const _apiKey = '2930766239d448b9b6a152353230905'
+    let _url = ``
+    let _forcast = ``
+    if(city) {
+      _url = `http://api.weatherapi.com/v1/current.json?key=${_apiKey}&q=${city}&aqi=no`;
+      _forcast = `http://api.weatherapi.com/v1/forecast.json?key=${_apiKey}&q=${city}&aqi=no&days=7`;
+    } else {
+      _url = `http://api.weatherapi.com/v1/current.json?key=${_apiKey}&q=${latitude},${longitude}&aqi=no`;
+      _forcast = `http://api.weatherapi.com/v1/forecast.json?key=${_apiKey}&q=${latitude},${longitude}&aqi=no&days=7`;
+    }
+    
 
     const [dayWeather, forecast , location] = await Promise.all([
       getResource(_url),
