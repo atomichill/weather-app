@@ -3,12 +3,14 @@ import '../hourly-info/hourly.scss'
 import '../../fonts/fonts-scss/fonts.scss'
 import '../weather-week/week.scss'
 
+import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react';
 import { getWeather } from '../../services/getWeather';
 import Search from '../search/Search';
 import WeatherInfo from '../weather-info/Info'
 
 function WeatherMain() {
+  const inputValue = useSelector((state) => state.input.inputValue);
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState([]);
   const [selectedDay, setSelectedDay] = useState(null);
@@ -16,7 +18,7 @@ function WeatherMain() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { current, forecast, location } = await getWeather();
+        const { current, forecast, location } = await getWeather(inputValue);
         setWeatherData({ condition: current.condition.text, city: location.name, windSpeed: current.wind_kph, humidity: current.humidity });
         setForecastData(forecast.forecastday);
       } catch (error) {
@@ -24,7 +26,7 @@ function WeatherMain() {
       }
     };
     fetchData();
-  }, []);
+  }, [inputValue]);
 
   const evenHourTemperatures = forecastData.length > 0 ? forecastData[0].hour.filter((hourData) => new Date(hourData.time).getHours() % 2 === 0).map((hourData) => hourData.temp_c) : [];
 

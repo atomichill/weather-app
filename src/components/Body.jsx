@@ -9,74 +9,61 @@ import { useEffect, useState} from 'react';
 
 import { useSelector } from 'react-redux';
 
-function Body () {
-    
-    console.log(getWeather())
+function Body() {
+    const inputValue = useSelector((state) => state.input.inputValue);
     const [weatherData, setWeatherData] = useState(null);
-    const [render,setRender] = useState();
+    const [render, setRender] = useState(false);
     const modal = useSelector((state) => state.counter.modal);
-    
-
+  
     useEffect(() => {
-        getWeather().then(({ current }) => {
+      getWeather(inputValue).then(({ current }) => {
         setWeatherData(current);
-        });
-    }, []);
-
-    if (!weatherData) {
-        return <div>Loading...</div>;
-    }
-
+      });
+    }, [inputValue]);
+  
     function chekDay () {
         const day = 'background_img_day'
         const night = 'background_img_night'
-        if(weatherData.is_day === 1 ) {
-            return day
+        if(weatherData && weatherData.is_day === 1 ) {
+          return day
         } else {
-            return night
+          return night
         }
+      }
+  
+    function chekRender() {
+      setRender((prevRender) => !prevRender);
+      console.log(render);
     }
-
-    function chekRender () {
-        if(render === true){
-            setRender(false)
-        } else {
-            setRender(true)
-        }
-        console.log(render);
-    }
-    
+  
     const clicked = () => {
-        if(render === true) {
-            return (
-                <div className='info_container'>
-                    <WeatherMain/>
-                </div>
-            )
-        }
-    }
-
+      if (render === true) {
+        return (
+          <div className="info_container">
+            <WeatherMain />
+          </div>
+        );
+      } else {
+        return null;
+      }
+    };
+  
     const chekModalStatus = () => {
-        if(modal === true) {
-            return (
-                <Modal/>
-            )
-        }
-    }
+      if (modal === true) {
+        return <Modal />;
+      }
+    };
+  
     return (
-        <div className="body_wrap">
-            <div className={chekDay()}>
-                {
-                    chekModalStatus()
-                }
-                <BodyInfo/>
-                <div className='btn_clck' onClick={chekRender}/>
-                {
-                    clicked()
-                };
-            </div>
+      <div className="body_wrap">
+        <div className={chekDay()}>
+          {chekModalStatus()}
+          <BodyInfo />
+          <div className="btn_clck" onClick={chekRender} />
+          {clicked()};
         </div>
-    )
-}
-
-export default Body;
+      </div>
+    );
+  }
+  
+  export default Body;

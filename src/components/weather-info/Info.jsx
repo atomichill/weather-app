@@ -6,16 +6,17 @@ import cloudy from './cloudy.svg'
 import humidity from './humidity.svg'
 import React, { useState, useEffect } from "react";
 import { getWeather } from '../../services/getWeather'
+import { useSelector } from 'react-redux'
 
 
 function WeatherInfo() {
   const [weatherData, setWeatherData] = useState(null);
-  
+  const inputValue = useSelector((state) => state.input.inputValue);
   useEffect(() => {
-    getWeather().then(({ current }) => {
+    getWeather(inputValue).then(({ current }) => {
       setWeatherData(current);
     });
-  }, []);
+  }, [inputValue]);
 
   if (!weatherData) {
     return <div>Loading...</div>;

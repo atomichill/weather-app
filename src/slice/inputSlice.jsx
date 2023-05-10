@@ -6,8 +6,8 @@ export const inputSlice  = createSlice({
         inputValue: ''
       }),
     reducers: {
-        inputSearch: (state , payload) => {
-            state.name = payload;
+        inputSearch: (state , action) => {
+            state.inputValue = action.payload
         } 
     }
 })
