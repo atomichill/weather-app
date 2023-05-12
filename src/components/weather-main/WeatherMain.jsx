@@ -10,6 +10,7 @@ import Search from '../search/Search';
 import WeatherInfo from '../weather-info/Info'
 
 function WeatherMain() {
+  console.log(getWeather())
   const inputValue = useSelector((state) => state.input.inputValue);
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState([]);
@@ -28,7 +29,10 @@ function WeatherMain() {
     fetchData();
   }, [inputValue]);
 
-  const evenHourTemperatures = forecastData.length > 0 ? forecastData[0].hour.filter((hourData) => new Date(hourData.time).getHours() % 2 === 0).map((hourData) => hourData.temp_c) : [];
+  const evenHourTemperatures = forecastData.reduce((acc, curr) => {
+    const evenHours = curr.hour.filter((hourData) => new Date(hourData.time).getHours() % 2 === 0).map((hourData) => hourData.temp_c);
+    return [...acc, ...evenHours];
+  }, []);
 
   const selectedDayHourlyData = selectedDay ? forecastData.find((day) => day.date === selectedDay.date).hour : [];
 
@@ -47,7 +51,7 @@ function WeatherMain() {
           <Search />
           <div className="weather_info">
             <h1>Weather info</h1>
-            <WeatherInfo/>
+            <WeatherInfo />
           </div>
           <div className="line" />
           <div className="week_weather">
@@ -61,20 +65,20 @@ function WeatherMain() {
           </div>
           <div className="line" />
           <div className='hourly_wrap'>
-              {evenHourTemperatures.map((temperature, index) => {
-                const selectedHourData = selectedDayHourlyData[index];
+              {evenHourTemperatures.map((temp, index) => {
+                const selectedHourData = selectedDayHourlyData.find((hourData) => new Date(hourData.time).getHours() === index * 2);
                 if (!selectedHourData) {
-                 return null;
+                  return null;
                 }
                 const time = selectedHourData.time.split(' ')[1].slice(0, -3);
                 const condition = selectedHourData.condition.text;
-                const temp = selectedHourData.temp_c
+                const temp_c = selectedHourData.temp_c;
 
                 return (
                   <div className='hourly_el' key={index}>
                     <p className='time'>{time}:00 {CheckTime(time)}</p>
                     <p className='condition'>{condition}</p>
-                    <p className='temp'>{temp}°</p>
+                    <p className='temp'>{temp_c}°</p>
                   </div>
                 );
               })}

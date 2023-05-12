@@ -33,7 +33,7 @@ function Body() {
   
     function chekRender() {
       setRender((prevRender) => !prevRender);
-      console.log(render);
+      
     }
   
     const clicked = () => {
