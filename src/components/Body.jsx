@@ -7,9 +7,12 @@ import WeatherMain from './weather-main/WeatherMain';
 import { getWeather } from '../services/getWeather';
 import { useEffect, useState} from 'react';
 
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { onLoaded } from '../slice/loadingSlice';
 
 function Body() {
+    const dispatch = useDispatch();
     const inputValue = useSelector((state) => state.input.inputValue);
     const [weatherData, setWeatherData] = useState(null);
     const [render, setRender] = useState(false);
@@ -18,8 +21,9 @@ function Body() {
     useEffect(() => {
       getWeather(inputValue).then(({ current }) => {
         setWeatherData(current);
+        dispatch(onLoaded());
       });
-    }, [inputValue]);
+    }, [inputValue, dispatch]);
   
     function chekDay () {
         const day = 'background_img_day'
@@ -37,10 +41,12 @@ function Body() {
     }
   
     const clicked = () => {
-      if (render === true) {
+      if (render === true ) {
         return (
-          <div className="info_container">
-            <WeatherMain />
+          <div className="info_container weather_main">
+            
+              <WeatherMain className={render ? 'roll-in' : ''}/>
+            
           </div>
         );
       } else {
@@ -50,7 +56,7 @@ function Body() {
   
     const chekModalStatus = () => {
       if (modal === true) {
-        return <Modal />;
+        return <Modal/>;
       }
     };
   

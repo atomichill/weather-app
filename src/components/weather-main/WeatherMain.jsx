@@ -3,6 +3,9 @@ import '../hourly-info/hourly.scss'
 import '../../fonts/fonts-scss/fonts.scss'
 import '../weather-week/week.scss'
 
+import { onLoaded } from '../../slice/loadingSlice'
+import Spinner from '../spinner/spinner'
+import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react';
 import { getWeather } from '../../services/getWeather';
@@ -10,7 +13,8 @@ import Search from '../search/Search';
 import WeatherInfo from '../weather-info/Info'
 
 function WeatherMain() {
-  console.log(getWeather())
+  
+  const dispatch = useDispatch();
   const inputValue = useSelector((state) => state.input.inputValue);
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState([]);
@@ -22,12 +26,13 @@ function WeatherMain() {
         const { current, forecast, location } = await getWeather(inputValue);
         setWeatherData({ condition: current.condition.text, city: location.name, windSpeed: current.wind_kph, humidity: current.humidity });
         setForecastData(forecast.forecastday);
+        dispatch(onLoaded());
       } catch (error) {
         console.error(error);
       }
     };
     fetchData();
-  }, [inputValue]);
+  }, [inputValue, dispatch]);
 
   const evenHourTemperatures = forecastData.reduce((acc, curr) => {
     const evenHours = curr.hour.filter((hourData) => new Date(hourData.time).getHours() % 2 === 0).map((hourData) => hourData.temp_c);
@@ -41,7 +46,7 @@ function WeatherMain() {
   }
 
   if (!weatherData || forecastData.length === 0) {
-    return <div>Loading...</div>;
+    return <Spinner/>;
   }
 
   return (
@@ -65,7 +70,7 @@ function WeatherMain() {
           </div>
           <div className="line" />
           <div className='hourly_wrap'>
-              {evenHourTemperatures.map((temp, index) => {
+              {evenHourTemperatures.map((temp,index) => {
                 const selectedHourData = selectedDayHourlyData.find((hourData) => new Date(hourData.time).getHours() === index * 2);
                 if (!selectedHourData) {
                   return null;
