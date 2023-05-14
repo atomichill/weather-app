@@ -1,3 +1,6 @@
+$var30: 30px;
+$var40: 40px;
+
 body {
     background-color: #0b0b14;
     
@@ -15,17 +18,28 @@ body {
         border-radius: 20px;
         overflow: hidden;
         display: flex;
-        justify-content: space-evenly;
         
+        position: relative;
+        .body_info {
+          position: absolute;
+        }
+        .weather_main {
+          animation: rollIn 1.5s ease-in-out forwards;
+          opacity: 0; 
+          animation-delay: 0.2s;
+          position: absolute;
+          right: 0;
+        }
         .btn_clck {
-          width: 40px;
-          height: 40px;
+          width: $var40;
+          height: $var40;
           border-radius: 100%;
           border: solid white 4px;
           cursor: pointer;
-          margin-top: 30px;
+          margin-top: $var30;
           margin-left: auto;
-          margin-right: 30px;
+          margin-right: $var30;
+          
         }
   
       }
@@ -41,15 +55,26 @@ body {
         position: relative;
         display: flex;
         overflow: hidden;
+        .body_info {
+          position: absolute;
+        }
+        .weather_main {
+          animation: rollIn 1.5s ease-in-out forwards;
+          opacity: 0; 
+          animation-delay: 0.2s;
+          position: absolute;
+          right: 0;
+        }
         .btn_clck {
-          width: 40px;
-          height: 40px;
+          width: $var40;
+          height: $var40;
           border-radius: 100%;
           border: solid white 4px;
           cursor: pointer;
-          margin-top: 30px;
+          margin-top: $var30;
           margin-left: auto;
-          margin-right: 30px;
+          margin-right: $var30;
+          
         }
       }
       

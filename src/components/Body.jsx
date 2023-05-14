@@ -15,6 +15,7 @@ function Body() {
     const dispatch = useDispatch();
     const inputValue = useSelector((state) => state.input.inputValue);
     const [weatherData, setWeatherData] = useState(null);
+    const [btnVisible, setBtnVisible] = useState(true);
     const [render, setRender] = useState(false);
     const modal = useSelector((state) => state.counter.modal);
   
@@ -39,14 +40,18 @@ function Body() {
       setRender((prevRender) => !prevRender);
       
     }
+
+    function handleBtnClck() {
+      chekRender();
+      setBtnVisible(false);
+    }
+  
   
     const clicked = () => {
       if (render === true ) {
         return (
-          <div className="info_container weather_main">
-            
-              <WeatherMain className={render ? 'roll-in' : ''}/>
-            
+          <div className="weather_main">
+              <WeatherMain/>
           </div>
         );
       } else {
@@ -64,8 +69,10 @@ function Body() {
       <div className="body_wrap">
         <div className={chekDay()}>
           {chekModalStatus()}
-          <BodyInfo />
-          <div className="btn_clck" onClick={chekRender} />
+          <BodyInfo className='body_info'/>
+          {btnVisible && ( 
+            <div className="btn_clck" onClick={handleBtnClck}/>
+          )}
           {clicked()};
         </div>
       </div>

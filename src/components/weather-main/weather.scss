@@ -2,18 +2,10 @@ $var20: 20px;
 $var30: 30px;
 
 .weather_i_wrap {
-    
+    margin-left: 350px;
     .weather_i_bg {
-       
         height: 800px;
         width: 550px;
-        
-        backdrop-filter: blur( 19.5px );
-        -webkit-backdrop-filter: blur( 19.5px );
-        border-radius: 10px;
-        
-        border-top-right-radius: $var20;
-        border-bottom-right-radius: $var20;
 
         .content_wrap {
             padding: $var30;

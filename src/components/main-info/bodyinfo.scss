@@ -1,8 +1,9 @@
-
-    
+$var50:50px;
+$var150: 150px;
+$var20: 20px;
     .info_wrap {
-        margin-left: 50px;
-        padding: 50px;
+        margin-left: $var50;
+        padding: $var50;
         height: 700px;
         width: auto;
         display: flex;
@@ -14,21 +15,21 @@
         }
         .background_info {
             img {
-                height: 150px;
+                height: $var150;
                 margin-left: 10px;
             }
             display: flex;
             align-items: center;
             .temp {
-                font-size: 150px;
+                font-size: $var150;
             }
             .info_city {
-                margin-left: 20px;
+                margin-left: $var20;
                 p {
                     font-size: 60px;
                 }
                 .date_time_info {
-                    font-size: 20px;
+                    font-size: $var20;
                 }
             }
         }
