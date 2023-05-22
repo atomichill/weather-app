@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
+    "start": "node main.jsx",
     "client": "npm run start --prefix client",
-    "server": "nodemon index.js",
+    "server": "nodemon main.jsx",
     "dev": "concurrently \"npm run client\" \"npm run server\"vite",
     "build": "vite build",
     "preview": "vite preview"
