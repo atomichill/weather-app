@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "npx babel src/main.js --out-dir dist && node dist/main.js",
+    "start": "babel src/main.js --out-dir dist && node dist/main.js",
     "client": "npm run start --prefix client",
     "server": "nodemon src/main.js",
     "dev": "concurrently \"npm run client\" \"npm run server\"vite",
@@ -32,6 +32,7 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
+    "babel-cli": "^6.26.0",
     "vite": "^4.2.0"
   }
 }
