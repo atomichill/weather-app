@@ -4,7 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "client": "npm run start --prefix client",
+    "server": "nodemon index.js",
+    "dev": "concurrently \"npm run client\" \"npm run server\"vite",
     "build": "vite build",
     "preview": "vite preview"
   },
