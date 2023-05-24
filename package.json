@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "npx babel src/main.js --out-dir dist && node dist/main.js",
+    "start": "npx babel-cli src/main.js --out-dir dist && node dist/main.js",
     "client": "npm run start --prefix client",
     "server": "nodemon src/main.js",
     "dev": "concurrently \"npm run client\" \"npm run server\"vite",
