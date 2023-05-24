@@ -43,11 +43,11 @@ async function getWeather(city) {
     let _url = ``
     let _forcast = ``
     if(city) {
-      _url = `http://api.weatherapi.com/v1/current.json?key=${_apiKey}&q=${city}&aqi=no`;
-      _forcast = `http://api.weatherapi.com/v1/forecast.json?key=${_apiKey}&q=${city}&aqi=no&days=7`;
+      _url = `https://api.weatherapi.com/v1/current.json?key=${_apiKey}&q=${city}&aqi=no`;
+      _forcast = `https://api.weatherapi.com/v1/forecast.json?key=${_apiKey}&q=${city}&aqi=no&days=7`;
     } else {
-      _url = `http://api.weatherapi.com/v1/current.json?key=${_apiKey}&q=${latitude},${longitude}&aqi=no`;
-      _forcast = `http://api.weatherapi.com/v1/forecast.json?key=${_apiKey}&q=${latitude},${longitude}&aqi=no&days=7`;
+      _url = `https://api.weatherapi.com/v1/current.json?key=${_apiKey}&q=${latitude},${longitude}&aqi=no`;
+      _forcast = `https://api.weatherapi.com/v1/forecast.json?key=${_apiKey}&q=${latitude},${longitude}&aqi=no&days=7`;
     }
     
 
